@@ -20,10 +20,10 @@ terraform {
 }
 
 
-data "aws_eks_cluster" "var.cluster_name" {
+data "aws_eks_cluster" "clustername" {
   name = "var.cluster_name"
 }
-data "aws_eks_cluster_auth" "var.cluster_name" {
+data "aws_eks_cluster_auth" "clustername" {
   name = "var.cluster_name"
 }
 
