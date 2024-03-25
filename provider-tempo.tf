@@ -20,11 +20,11 @@ terraform {
 }
 
 
-data "aws_eks_cluster" "${var.cluster_name}" {
-  name = "${var.cluster_name}"
+data "aws_eks_cluster" "var.cluster_name" {
+  name = "var.cluster_name"
 }
-data "aws_eks_cluster_auth" "${var.cluster_name}" {
-  name = "${var.cluster_name}"
+data "aws_eks_cluster_auth" "var.cluster_name" {
+  name = "var.cluster_name"
 }
 
 
@@ -34,9 +34,9 @@ provider "aws" {
 
 provider "helm" {
     kubernetes {
-       host                   = data.aws_eks_cluster.${var.cluster_name}.endpoint
-       cluster_ca_certificate = base64decode(data.aws_eks_cluster.${var.cluster_name}.certificate_authority[0].data)
-       token                  = data.aws_eks_cluster_auth.${var.cluster_name}.token
+       host                   = data.aws_eks_cluster.var.cluster_name.endpoint
+       cluster_ca_certificate = base64decode(data.aws_eks_cluster.var.cluster_name.certificate_authority[0].data)
+       token                  = data.aws_eks_cluster_auth.var.cluster_name.token
        config_path = "~/.kube/config"
   exec {
     api_version = "client.authentication.k8s.io/v1beta1"
@@ -47,9 +47,9 @@ provider "helm" {
 }
 
 provider "kubernetes" {
-  host                   = data.aws_eks_cluster.${var.cluster_name}.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.${var.cluster_name}.certificate_authority[0].data)
-  token                  = data.aws_eks_cluster_auth.${var.cluster_name}.token
+  host                   = data.aws_eks_cluster.var.cluster_name.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.var.cluster_name.certificate_authority[0].data)
+  token                  = data.aws_eks_cluster_auth.var.cluster_name.token
  #  version          = "2.16.1"
   config_path = "~/.kube/config"
   exec {
@@ -62,9 +62,9 @@ provider "kubernetes" {
 
 # provider "kubectl" {
 #    load_config_file = false
-#    host                   = data.aws_eks_cluster.${var.cluster_name}.endpoint
-#    cluster_ca_certificate = base64decode(data.aws_eks_cluster.${var.cluster_name}.certificate_authority[0].data)
-#    token                  = data.aws_eks_cluster_auth.${var.cluster_name}_auth.token
+#    host                   = data.aws_eks_cluster.var.cluster_name.endpoint
+#    cluster_ca_certificate = base64decode(data.aws_eks_cluster.var.cluster_name.certificate_authority[0].data)
+#    token                  = data.aws_eks_cluster_auth.var.cluster_name_auth.token
 #    exec {
 #     api_version = "client.authentication.k8s.io/v1beta1"
 #     command     = "aws-iam-authenticator"
