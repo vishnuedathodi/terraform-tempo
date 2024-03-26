@@ -52,7 +52,7 @@ resource "helm_release" "otel" {
   version    = "0.85.0"
   timeout = 2000
   values = [
-    "${path.module}/values-otel.yaml"  
+    file("${path.module}/values-otel.yaml") 
   ]
 }
   
