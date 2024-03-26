@@ -18,7 +18,7 @@ config:
     logging:
       loglevel: debug
     otlp:
-     endpoint: tempo:4317
+     endpoint: tempo.prometheus.svc.cluster.local:4317
      tls:
       insecure: true
 
