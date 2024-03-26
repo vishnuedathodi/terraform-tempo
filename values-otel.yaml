@@ -18,7 +18,7 @@ config:
     logging:
       loglevel: debug
     otlp:
-     endpoint: grafana-tempo:4317
+     endpoint: tempo:4317
      tls:
       insecure: true
 
