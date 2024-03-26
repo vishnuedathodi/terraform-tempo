@@ -41,4 +41,18 @@ resource "helm_release" "tempo" {
     })
   }
 }
+
+resource "helm_release" "otel" {
+ 
+  name       = "opentelemetry-collector"  
+  repository = "https://open-telemetry.github.io/opentelemetry-helm-charts"
+  chart      = "opentelemetry-collector"
+  namespace  = "prometheus"
+  create_namespace = false
+  version    = "0.85.0"
+  timeout = 2000
+  values = [
+    "${path.module}/values-otel.yaml"  
+  ]
+}
   
