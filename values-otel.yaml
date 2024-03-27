@@ -5,7 +5,7 @@ config:
     otlp:
       protocols:
         grpc:
-          endpoint: 0.0.0.0:4317
+          endpoint: tempo.prometheus.svc.cluster.local:4317
         http:
           endpoint: 0.0.0.0:4318
 
@@ -27,7 +27,7 @@ config:
       traces:
        receivers: [otlp]
        processors: [batch]
-       exporters: [debug, otlp]
+       exporters: [otlp]
 
 resources:
   limits:
