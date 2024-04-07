@@ -21,7 +21,7 @@ resource "helm_release" "tempo" {
   chart      = "tempo"
   namespace  = "prometheus"
   create_namespace = false
-  version    = "1.7.2"
+  #version    = "1.7.2"
   timeout = 2000
   set {
     name  = "server.persistentVolume.enabled"
@@ -49,7 +49,7 @@ resource "helm_release" "otel" {
   chart      = "opentelemetry-collector"
   namespace  = "prometheus"
   create_namespace = false
-  version    = "0.85.0"
+  #version    = "0.85.0"
   timeout = 2000
   values = [
     file("${path.module}/values-otel.yaml") 
