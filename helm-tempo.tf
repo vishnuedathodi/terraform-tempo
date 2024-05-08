@@ -49,7 +49,7 @@ resource "helm_release" "otel" {
   chart      = "opentelemetry-collector"
   namespace  = "monitoring"
   create_namespace = false
-  #version    = "0.85.0"
+  version    = "0.85.0"
   timeout = 2000
   values = [
     file("${path.module}/values-otel.yaml") 
