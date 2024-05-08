@@ -19,7 +19,7 @@ resource "helm_release" "tempo" {
   name       = "${var.release_name}"  
   repository = "https://grafana.github.io/helm-charts"
   chart      = "tempo"
-  namespace  = "prometheus"
+  namespace  = "monitoring"
   create_namespace = false
   #version    = "1.7.2"
   timeout = 2000
@@ -47,7 +47,7 @@ resource "helm_release" "otel" {
   name       = "opentelemetry-collector"  
   repository = "https://open-telemetry.github.io/opentelemetry-helm-charts"
   chart      = "opentelemetry-collector"
-  namespace  = "prometheus"
+  namespace  = "monitoring"
   create_namespace = false
   #version    = "0.85.0"
   timeout = 2000
