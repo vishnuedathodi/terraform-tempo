@@ -19,7 +19,7 @@ resource "helm_release" "tempo" {
   name       = "${var.release_name}"  
   repository = "https://grafana.github.io/helm-charts"
   chart      = "tempo"
-  namespace  = "monitoring"
+  namespace  = "${var.namespace}"
   create_namespace = false
   #version    = "1.7.2"
   timeout = 2000
