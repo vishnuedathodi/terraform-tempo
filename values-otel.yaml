@@ -28,10 +28,10 @@ config:
 
   service:
     pipelines:
-      #metrics:
-        #receivers: [otlp]
-        #processors: [batch]
-        #exporters: [prometheus]
+      metrics:
+        receivers: [otlp]
+        processors: [batch]
+        exporters: [prometheus]
       traces:
         receivers: [otlp]
         processors: [batch]
